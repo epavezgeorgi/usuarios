@@ -11,9 +11,8 @@ import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import java.util.Map;
+
 
 @RestController
 @RequestMapping("/api/usuarios")
@@ -81,30 +80,4 @@ public class UsuarioController {
         }
     }
 
-    
-
-    @GetMapping("/top10")
-    public ResponseEntity<List<Usuario>> getTop10UsersByScore() {
-        List<Usuario> topUsers = usuarioService.obtenerTop10UsuariosPorPuntaje();
-        if (topUsers.isEmpty()) {
-            return ResponseEntity.noContent().build();
-        }
-        return ResponseEntity.ok(topUsers);
-    }
-
-    @PatchMapping("/{id}/titulo")
-    public ResponseEntity<Usuario> actualizarTitulo(@PathVariable Long id, @RequestBody Map<String, String> payload) {
-        try {
-            String nuevoTitulo = payload.get("titulo");
-            if (nuevoTitulo == null) {
-                return ResponseEntity.badRequest().build();
-            }
-            Usuario usuarioActualizado = usuarioService.actualizarTitulo(id, nuevoTitulo);
-            return ResponseEntity.ok(usuarioActualizado);
-        } catch (RuntimeException e) {
-            return ResponseEntity.notFound().build();
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
-    }
 }

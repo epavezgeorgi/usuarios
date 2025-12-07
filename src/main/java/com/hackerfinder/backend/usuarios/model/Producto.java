@@ -11,21 +11,27 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Column;
 
 @Entity
-@Table(name = "equipo")
+@Table(name = "producto")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Equipo {
+public class Producto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idEquipo;
+    private Long idProducto;
 
-    @Column(unique = true, nullable = false)
-    private String nombreEquipo;
+    @Column(nullable = false)
+    private String nombre;
 
-    @Column(nullable = true)
+    @Column(nullable = false)
+    private Double precio;
+
+    @Column(nullable = false)
+    private Integer stock;
+
+    @Column(nullable = false)
+    private String categoria;
+
+    @Column(nullable = true, length = 500)
     private String descripcion;
-
-    @Column(nullable = true)
-    private String logoEquipo;
 }

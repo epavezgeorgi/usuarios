@@ -31,8 +31,8 @@ class UsuariosApplicationTests {
 
 	@Test
 	void testRegister() {
-		Usuario nuevoUsuario = new Usuario(null, "newuser", "New User", "new@test.com", "password123", null, 0);
-		Usuario savedUsuario = new Usuario(1L, "newuser", "New User", "new@test.com", "password123","FL4G-HUNT3R", 0);
+		Usuario nuevoUsuario = new Usuario(null, "newuser", "New User", "new@test.com", "password123");
+		Usuario savedUsuario = new Usuario(1L, "newuser", "New User", "new@test.com", "password123");
 
 		when(usuarioService.findByUsername("newuser")).thenReturn(null);
 		when(usuarioService.saveUsuario(any(Usuario.class))).thenReturn(savedUsuario);
@@ -51,7 +51,7 @@ class UsuariosApplicationTests {
 		loginRequest.setUsername("existinguser");
 		loginRequest.setContrasena("password123");
 
-		Usuario existeUsuario = new Usuario(1L, "existinguser", "Existing User", "existing@test.com", "password123", "FL4G-HUNT3R",0);
+		Usuario existeUsuario = new Usuario(1L, "existinguser", "Existing User", "existing@test.com", "password123");
 
 		when(usuarioService.inicioSesion("existinguser", "password123")).thenReturn(existeUsuario);
 

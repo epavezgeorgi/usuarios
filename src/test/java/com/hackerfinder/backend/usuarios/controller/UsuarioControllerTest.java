@@ -30,7 +30,7 @@ public class UsuarioControllerTest {
 
     @BeforeEach
     void setUp(){
-        usuario = new Usuario(1L, "testuser", "Test User", "test@test.com","testpassword123", null, 0);
+        usuario = new Usuario(1L, "testuser", "Test User", "test@test.com","testpassword123");
 
     }
 

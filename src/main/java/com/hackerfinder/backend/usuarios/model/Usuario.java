@@ -33,10 +33,4 @@ public class Usuario {
     @Column(nullable = false)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String contrasena;
-
-    @Column(nullable = true)
-    private String titulo;
-
-    @Column(nullable = false)
-    private Integer puntaje = 0;
 }

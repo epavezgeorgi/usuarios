@@ -23,7 +23,6 @@ public class UsuarioService {
     }
 
     public Usuario saveUsuario(Usuario usuario) {
-        usuario.setPuntaje(0);
         return usuarioRepository.save(usuario);
     }
 
@@ -37,16 +36,5 @@ public class UsuarioService {
 
     public void delete(Long id) {
         usuarioRepository.deleteById(id);
-    }
-
-    public List<Usuario> obtenerTop10UsuariosPorPuntaje() {
-        return usuarioRepository.obtenerTop10UsuariosPorPuntaje();
-    }
-
-    public Usuario actualizarTitulo(Long idUsuario, String nuevoTitulo) {
-        Usuario usuario = usuarioRepository.findById(idUsuario)
-            .orElseThrow(() -> new RuntimeException("Usuario no encontrado con ID: " + idUsuario));
-        usuario.setTitulo(nuevoTitulo);
-        return usuarioRepository.save(usuario);
     }
 }
